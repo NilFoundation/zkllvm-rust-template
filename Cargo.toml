@@ -1,0 +1,11 @@
+[package]
+name = "zkllvm-rust-template"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ark-pallas = { git = "https://github.com/NilFoundation/arkworks-curves.git" }
+
+[features]
+default = []
+zkllvm = ["ark-pallas/zkllvm"]
