@@ -34,7 +34,9 @@ rustc +zkllvm --version && assigner --version && transpiler --version
 You must see something like this:
 
 ```plain
-TODO
+0.1.8-4
+0.1.8-4
+rustc 1.68.0-nightly (bd2e7bf46 2023-11-01) (zkLLVM 0.1.8)
 ```
 
 Now you are ready to build the circuit.
