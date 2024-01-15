@@ -32,7 +32,7 @@ jobs:
         run: |
           sudo bash -c "echo 'deb [trusted=yes]  http://deb.nil.foundation/ubuntu/ all main' >>/etc/apt/sources.list"
           sudo apt update
-          sudo apt install -y zkllvm=$TOOLCHAIN_VERSION libboost-all-dev
+          sudo apt install -y zkllvm=$TOOLCHAIN_VERSION proof-producer libboost-all-dev
 
       - name: Install Rust zkLLVM toolchain
         run: |
@@ -55,3 +55,10 @@ jobs:
             -t assignment.tbl \
             -c circuit.crct \
             -e pallas
+
+      - name: Generate proof
+        run: |
+          proof-generator \
+            --circuit circuit.crct \
+            --assignment assignment.tbl \
+            --proof proof.bin

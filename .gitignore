@@ -6,5 +6,8 @@ Cargo.lock
 .vscode/
 
 # Circuit-related generated files
-*.tbl
-*.crct
+/*.crct
+/*.tbl
+/*.bin
+/*.json
+/*.sol
