@@ -50,7 +50,7 @@ First you need to install zkLLVM compilers and tools.
     ```bash
     bash -c "echo 'deb [trusted=yes]  http://deb.nil.foundation/ubuntu/ all main' >>/etc/apt/sources.list"
     apt update
-    apt install -y zkllvm proof-producer libboost-all-dev
+    apt install -y zkllvm proof-producer
     ```
 
 2. Install zkLLVM Rust toolchain:
