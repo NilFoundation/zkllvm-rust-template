@@ -58,7 +58,7 @@ jobs:
 
       - name: Generate proof
         run: |
-          proof-generator \
+          proof-generator-single-threaded \
             --circuit circuit.crct \
             --assignment assignment.tbl \
             --proof proof.bin
