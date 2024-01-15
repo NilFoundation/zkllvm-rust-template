@@ -62,14 +62,14 @@ First you need to install zkLLVM compilers and tools.
 Check the installation:
 
 ```bash
-rustc +zkllvm --version && assigner --version && proof-generator-single-threaded --version
+rustc +zkllvm --version && assigner --version
 ```
 
 You must see something like this:
 
 ```plain
-0.1.8-4
 rustc 1.68.0-nightly (bd2e7bf46 2023-11-01) (zkLLVM 0.1.8)
+0.1.8-4
 ```
 
 ### Clone repository
