@@ -33,8 +33,8 @@ jobs:
       - name: Install zkLLVM DEB package
         run: |
           sudo bash -c "echo 'deb [trusted=yes]  http://deb.nil.foundation/ubuntu/ all main' >>/etc/apt/sources.list"
-          apt update
-          apt install -y zkllvm=$TOOLCHAIN_VERSION libboost-all-dev
+          sudo apt update
+          sudo apt install -y zkllvm=$TOOLCHAIN_VERSION libboost-all-dev
 
       - name: Install Rust zkLLVM toolchain
         run: |
