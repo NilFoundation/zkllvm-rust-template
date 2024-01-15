@@ -1,3 +1,10 @@
+# Rust
 /target
 Cargo.lock
+
+# VSCode
 .vscode/
+
+# Circuit-related generated files
+*.tbl
+*.crct
