@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 ark-pallas = { git = "https://github.com/NilFoundation/arkworks-curves.git" }
+ark-ff = { git = "https://github.com/NilFoundation/arkworks-algebra.git" }
 
 [features]
 default = []
