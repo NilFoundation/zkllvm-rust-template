@@ -26,7 +26,7 @@ jobs:
       - name: Install Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
       - name: Install zkLLVM DEB package
         run: |
@@ -37,4 +37,4 @@ jobs:
       - name: Install Rust zkLLVM toolchain
         run: |
           curl --proto '=https' --tlsv1.2 -O https://cdn.jsdelivr.net/gh/NilFoundation/zkllvm@master/rslang-installer.py
-          python3.9 rslang-installer.py --channel nightly --verbose v$TOOLCHAIN_VERSION
+          python3.10 rslang-installer.py --channel nightly --verbose v$TOOLCHAIN_VERSION
