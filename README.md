@@ -1,13 +1,9 @@
 # zkLLVM Rust template
 
-This repository goes step-by-step through the process of using zkLLVM toolchain to generate zk-proof
-for algorithms implemented in Rust.
+[![Tutorial check](https://github.com/NilFoundation/zkllvm-rust-template/actions/workflows/main.yml/badge.svg)](https://github.com/NilFoundation/zkllvm-rust-template/actions/workflows/main.yml)
 
-Table of contents:
-
-- [Prerequisites](#prerequisites)
-- [Install zkLLVM toolchain](#install-zkllvm-toolchain)
-- [Building circuit](#building-rust-code)
+This repository goes step-by-step through the process of using zkLLVM toolchain to generate
+zero-knowledge proof for Rust code.
 
 ## Prerequisites
 
@@ -17,29 +13,73 @@ Supported platforms:
 
 Dependencies:
 
-- Python 3.7+
+- Python 3.10+
+- Git
+- Curl
 
-## Install zkLLVM toolchain
+### Table of contents
 
-1. Install `zkllvm` deb-package as described [here][zkllvm-deb-package].
-2. Install zkLLVM Rust as described [here][rslang-binary-installation].
-3. Install proof-generator: **TODO**
+- [Introduction](#introduction)
+- [Getting started](#getting-started)
+- [Building code](#building-rust-code)
+- [Generating circuit](#generating-circuit)
 
-To check the installation, print versions:
+## Introduction
+
+This turorial goes step-by-step through the process of circuit development.
+
+Overall process includes:
+
+- writing source code in Rust (you already have a simple piece of code in this repository)
+- generating arithmetic circuit for this code
+- generating assignment table (execution trace) for this circuit
+- generating proof for this circuit locally
+OR
+- posting a request on Proof Marker
+
+__TODO:__ fix this section
+
+## Getting started
+
+First you need to install zkLLVM compilers and tools.
+
+### Install zkLLVM toolchain
+
+1. Install `zkllvm` and `proof-produces` DEB-packages:
+
+    ```bash
+    bash -c "echo 'deb [trusted=yes]  http://deb.nil.foundation/ubuntu/ all main' >>/etc/apt/sources.list"
+    apt update
+    apt install -y zkllvm proof-producer libboost-all-dev
+    ```
+
+2. Install zkLLVM Rust toolchain:
+
+    ```bash
+    curl --proto '=https' --tlsv1.2 -sSf https://cdn.jsdelivr.net/gh/NilFoundation/zkllvm@master/rslang-installer.py | python - --channel nightly
+    ```
+
+Check the installation:
 
 ```bash
-rustc +zkllvm --version && assigner --version && transpiler --version
+rustc +zkllvm --version && assigner --version && proof-generator-single-threaded --version
 ```
 
 You must see something like this:
 
 ```plain
 0.1.8-4
-0.1.8-4
 rustc 1.68.0-nightly (bd2e7bf46 2023-11-01) (zkLLVM 0.1.8)
 ```
 
-Now you are ready to build the circuit.
+### Clone repository
+
+```bash
+git clone https://github.com/NilFoundation/zkllvm-rust-template.git
+cd zkllvm-rust-template
+```
+
+Now you are ready build something.
 
 ## Building Rust code
 
@@ -83,9 +123,8 @@ To generate circuit, use command:
 assigner -b target/assigner-unknown-unknown/release/zkllvm-rust-template.ll -i inputs/example.inp -t assignment.tbl -c circuit.crct -e pallas
 ```
 
-## Generate and verify a proof locally
+## Generate a proof locally
 
-TODO
-
-[zkllvm-deb-package]: https://docs.nil.foundation/zkllvm/starting-first-project/installation#binary-installation
-[rslang-binary-installation]: https://github.com/NilFoundation/zkLLVM#rust-toolchain
+```bash
+proof-generator-single-threaded --circuit circuit.crct --assignment assignment.tbl --proof proof.bin
+```
