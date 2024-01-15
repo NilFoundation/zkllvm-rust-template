@@ -37,4 +37,4 @@ jobs:
       - name: Install Rust zkLLVM toolchain
         run: |
           curl --proto '=https' --tlsv1.2 -O https://cdn.jsdelivr.net/gh/NilFoundation/zkllvm@master/rslang-installer.py
-          python3.7 rslang-installer.py --channel nightly --verbose v$TOOLCHAIN_VERSION
+          python3.8 rslang-installer.py --channel nightly --verbose v$TOOLCHAIN_VERSION
