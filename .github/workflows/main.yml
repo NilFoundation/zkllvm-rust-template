@@ -43,7 +43,6 @@ jobs:
         run: |
           rustc +zkllvm --version
           assigner --version
-          proof-generator-single-threaded --help
 
       - name: Build code
         run: cargo +zkllvm build --release --target assigner-unknown-unknown --features=zkllvm
