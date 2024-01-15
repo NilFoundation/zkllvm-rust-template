@@ -13,9 +13,6 @@ concurrency:
     format('{0}/{1}', github.workflow, github.ref) }}
   cancel-in-progress: true
 
-env:
-  TOOLCHAIN_VERSION: 0.1.14
-
 jobs:
   test-zkllvm-rust-workflow:
     runs-on: ubuntu-22.04
@@ -32,12 +29,12 @@ jobs:
         run: |
           sudo bash -c "echo 'deb [trusted=yes]  http://deb.nil.foundation/ubuntu/ all main' >>/etc/apt/sources.list"
           sudo apt update
-          sudo apt install -y zkllvm=$TOOLCHAIN_VERSION proof-producer libboost-all-dev
+          sudo apt install -y zkllvm proof-producer
 
       - name: Install Rust zkLLVM toolchain
         run: |
           curl --proto '=https' --tlsv1.2 -O https://cdn.jsdelivr.net/gh/NilFoundation/zkllvm@master/rslang-installer.py
-          python3.10 rslang-installer.py --channel nightly v$TOOLCHAIN_VERSION
+          python3.10 rslang-installer.py --channel nightly
 
       - name: Check the installation
         run: |
